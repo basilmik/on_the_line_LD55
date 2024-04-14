@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkxomax3463ft"]
+
+[ext_resource type="Script" path="res://scripts/control.gd" id="1_ckw74"]
+[ext_resource type="Script" path="res://scripts/ourcome_s.gd" id="2_lo22y"]
+[ext_resource type="PackedScene" uid="uid://b1ch4tqcx31or" path="res://scenes/income.tscn" id="2_pcfpy"]
+[ext_resource type="PackedScene" uid="uid://bsd8h70jihnhb" path="res://scenes/user_stats.tscn" id="4_4f7mu"]
+[ext_resource type="Script" path="res://scripts/connect_line.gd" id="6_dpbxg"]
+[ext_resource type="Texture2D" uid="uid://bv4teiijqtsi7" path="res://pics/back_ground.png" id="6_msnai"]
+
+[node name="main" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("6_msnai")
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(3.5, 3.5)
+
+[node name="control" type="Node2D" parent="."]
+position = Vector2(-105, -40)
+script = ExtResource("1_ckw74")
+
+[node name="user_stats" parent="control" instance=ExtResource("4_4f7mu")]
+offset = Vector2(20, 20)
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 20, 20)
+
+[node name="current" parent="control" instance=ExtResource("2_pcfpy")]
+position = Vector2(-34.2, 109.8)
+scale = Vector2(0.8, 0.8)
+
+[node name="current2" parent="control" instance=ExtResource("2_pcfpy")]
+position = Vector2(4.8, 109.8)
+scale = Vector2(0.8, 0.8)
+
+[node name="current3" parent="control" instance=ExtResource("2_pcfpy")]
+position = Vector2(42.8, 109.8)
+scale = Vector2(0.8, 0.8)
+
+[node name="current4" parent="control" instance=ExtResource("2_pcfpy")]
+position = Vector2(80.8, 109.8)
+scale = Vector2(0.8, 0.8)
+
+[node name="current5" parent="control" instance=ExtResource("2_pcfpy")]
+position = Vector2(119.8, 109.8)
+scale = Vector2(0.8, 0.8)
+
+[node name="OUTCOME" type="Node2D" parent="control"]
+position = Vector2(104, -34)
+script = ExtResource("2_lo22y")
+
+[node name="Line2D" type="Line2D" parent="control"]
+texture_mode = 1
+script = ExtResource("6_dpbxg")

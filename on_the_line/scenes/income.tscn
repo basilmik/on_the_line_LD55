@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1ch4tqcx31or"]
+
+[ext_resource type="Texture2D" uid="uid://che14g7n36d24" path="res://pics/no_incoming.png" id="1_ng8hi"]
+[ext_resource type="Script" path="res://scripts/income.gd" id="2_03783"]
+[ext_resource type="Texture2D" uid="uid://qqkbnyjlqh77" path="res://pics/red_light.png" id="3_ng8no"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8mot"]
+
+[sub_resource type="Theme" id="Theme_gj8ay"]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 3
+Label/constants/shadow_outline_size = 6
+Label/font_sizes/font_size = 10
+
+[node name="income" type="Sprite2D"]
+texture = ExtResource("1_ng8hi")
+script = ExtResource("2_03783")
+
+[node name="shape" type="Area2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="shape"]
+shape = SubResource("RectangleShape2D_q8mot")
+
+[node name="top" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -16)
+texture = ExtResource("3_ng8no")
+
+[node name="left" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(-16, -5)
+texture = ExtResource("3_ng8no")
+
+[node name="right" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(16, -5)
+texture = ExtResource("3_ng8no")
+
+[node name="bot_left" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(-13, 11)
+texture = ExtResource("3_ng8no")
+
+[node name="bot_right" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(11, 10)
+texture = ExtResource("3_ng8no")
+
+[node name="wait_time_left" type="Label" parent="."]
+offset_left = -6.0
+offset_top = 16.0
+offset_right = 13.0
+offset_bottom = 34.0
+theme = SubResource("Theme_gj8ay")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+
+[connection signal="input_event" from="shape" to="." method="_on_shape_input_event"]
+[connection signal="mouse_entered" from="shape" to="." method="_on_shape_mouse_entered"]
+[connection signal="mouse_exited" from="shape" to="." method="_on_shape_mouse_exited"]
